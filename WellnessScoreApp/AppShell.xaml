@@ -8,7 +8,7 @@
     Title="WellnessScoreApp">
 
     <ShellContent
-        Title="Home"
+        Title="Wellness Score App"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
