@@ -47,5 +47,39 @@ namespace WellnessScoreApp
             SliderActivity.ThumbColor = accentColor;
             SliderActivity.MinimumTrackColor = accentColor;
         }
+
+        private void OnBtnSubmitClick(object sender, EventArgs e)
+        {
+            int score = CalculateWellnessScore();
+            LblScore.Text = score.ToString();
+            string rating = GetRating(score);
+            LblRating.Text = rating;
+            ResultsBox.IsVisible = true;
+        }
+
+        private int CalculateWellnessScore()
+        {
+            double sleepHours = SliderSleep.Value;
+            double stressLevel = SliderStress.Value;
+            double activityMinutes = SliderActivity.Value;
+
+            double rawScore = (sleepHours * 8) - (stressLevel * 5) + (activityMinutes * 0.5);
+
+            if (rawScore < 0) rawScore = 0;
+            if (rawScore > 100) rawScore = 100;
+
+            return (int)Math.Round(rawScore);
+        }
+
+        private string GetRating(int score)
+        {
+            switch(score)
+            {
+                case >= 80: return "Excellent";
+                case >= 60: return "Good";
+                case >= 40: return "Fair";
+                default: return "Poor";
+            }
+        }
     }
 }
