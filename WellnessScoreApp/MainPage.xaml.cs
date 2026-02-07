@@ -6,6 +6,9 @@ namespace WellnessScoreApp
         public MainPage()
         {
             InitializeComponent();
+            SliderSleep.ValueChanged += OnInputChanged;
+            SliderStress.ValueChanged += OnInputChanged;
+            SliderActivity.ValueChanged += OnInputChanged;
         }
 
         protected override void OnAppearing()
@@ -19,12 +22,19 @@ namespace WellnessScoreApp
         {
             selectedGender = "male";
             UpdateColors();
+            UpdateResults();
         }
 
         private void OnFemaleTapped(object sender, EventArgs e)
         {
             selectedGender = "female";
             UpdateColors();
+            UpdateResults();
+        }
+
+        private void OnInputChanged(object sender, ValueChangedEventArgs e)
+        {
+            UpdateResults();
         }
 
         private void UpdateColors()
@@ -50,12 +60,17 @@ namespace WellnessScoreApp
 
         private void OnBtnSubmitClick(object sender, EventArgs e)
         {
+            UpdateResults();
+            ResultsBox.IsVisible = true;
+        }
+
+        private void UpdateResults()
+        {
             int score = CalculateWellnessScore();
             string rating = GetRating(score);
             LblScore.Text = score.ToString();
             LblRating.Text = rating;
             LblRecommendation.Text = GetRecommendation(rating);
-            ResultsBox.IsVisible = true;
         }
 
         private int CalculateWellnessScore()
