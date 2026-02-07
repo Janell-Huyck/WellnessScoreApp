@@ -1,4 +1,4 @@
-﻿namespace WellnessScoreApp
+namespace WellnessScoreApp
 {
     public partial class MainPage : ContentPage
     {
@@ -6,26 +6,22 @@
         public MainPage()
         {
             InitializeComponent();
-            SetGenderMale();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            selectedGender = "male";
+            UpdateColors();
         }
 
         private void OnMaleTapped(object sender, EventArgs e)
-        {
-            SetGenderMale();
-        }
-
-        private void SetGenderMale()
         {
             selectedGender = "male";
             UpdateColors();
         }
 
         private void OnFemaleTapped(object sender, EventArgs e)
-        {
-            SetGenderFemale();
-        }
-
-        private void SetGenderFemale()
         {
             selectedGender = "female";
             UpdateColors();
