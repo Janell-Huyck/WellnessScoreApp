@@ -7,17 +7,18 @@
         x:Name="MainScrollView">
         <Grid
             RowDefinitions="Auto, Auto, Auto, Auto, Auto"
-            RowSpacing="15">
+            RowSpacing="8">
             <Grid
                 Grid.Row="0"
                 ColumnDefinitions="*,*"
-                ColumnSpacing="20"
-                Padding="10">
+                ColumnSpacing="12"
+                Padding="6">
                 <Frame
                     x:Name="FrameMale"
                     Grid.Column="0"
                     BorderColor="Gray"
-                    CornerRadius="15"
+                    CornerRadius="12"
+                    Padding="6"
                     HasShadow="True">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnMaleTapped" />
@@ -25,11 +26,11 @@
                     <VerticalStackLayout>
                         <Image
                             Source="male"
-                            HeightRequest="30"
+                            HeightRequest="24"
                             />
                         <Label
                             Text="Male"
-                            FontSize="Body"
+                            FontSize="Caption"
                             HorizontalOptions="Center"
                             />
                     </VerticalStackLayout>
@@ -38,7 +39,8 @@
                     x:Name="FrameFemale"
                     Grid.Column="1"
                     BorderColor="Gray"
-                    CornerRadius="15"
+                    CornerRadius="12"
+                    Padding="6"
                     HasShadow="True">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnFemaleTapped" />
@@ -46,11 +48,11 @@
                     <VerticalStackLayout>
                         <Image
                             Source="female"
-                            HeightRequest="30"
+                            HeightRequest="24"
                             />
                         <Label
                             Text="Female"
-                            FontSize="Body"
+                            FontSize="Caption"
                             HorizontalOptions="Center"
                             />
                     </VerticalStackLayout>
@@ -58,72 +60,94 @@
             </Grid>
             <VerticalStackLayout
                 Grid.Row="1"
-                Spacing="10">
-                <Label
-                    Text="Sleep (hours)"
-                    HorizontalOptions="Center"
-                    FontSize="Body"/>
+                Spacing="4">
+                <Grid
+                    ColumnDefinitions="*,Auto">
+                    <Label
+                        Text="Sleep (hours)"
+                        FontSize="Body"
+                        VerticalOptions="Center"
+                        />
+                    <Label
+                        Grid.Column="1"
+                        Text="{Binding Source={x:Reference SliderSleep}, Path=Value, StringFormat='{0:F1} hrs'}"
+                        FontSize="Body"
+                        FontAttributes="Bold"
+                        VerticalOptions="Center"
+                        x:Name="LblSleep"
+                        />
+                </Grid>
                 <Slider
                     x:Name="SliderSleep"
                     Minimum="0"
                     Maximum="12"
                     Value="7"
-                    BackgroundColor="White"/>
-                <Label
-                    Text="{Binding Source={x:Reference SliderSleep}, Path=Value, StringFormat='{0:F1} hrs'}"
-                    HorizontalOptions="Center"
-                    FontSize="Body"
-                    FontAttributes="Bold"
-                    x:Name="LblSleep"/>
+                    BackgroundColor="White"
+                    />
             </VerticalStackLayout>
             <VerticalStackLayout
                 Grid.Row="2"
-                Spacing="10">
-                <Label
-                    Text="Stress Level"
-                    HorizontalOptions="Center"
-                    FontSize="Body"/>
+                Spacing="4">
+                <Grid
+                    ColumnDefinitions="*,Auto">
+                    <Label
+                        Text="Stress (0=calm, 10=stressed)"
+                        FontSize="Body"
+                        VerticalOptions="Center"
+                        />
+                    <Label
+                        Grid.Column="1"
+                        Text="{Binding Source={x:Reference SliderStress}, Path=Value, StringFormat='{0:F0}'}"
+                        FontSize="Body"
+                        FontAttributes="Bold"
+                        VerticalOptions="Center"
+                        x:Name="LblStress"
+                        />
+                </Grid>
                 <Slider
                     x:Name="SliderStress"
                     Minimum="0"
                     Maximum="10"
                     Value="4"
-                    BackgroundColor="White"/>
-                <Label
-                    Text="0 = very calm, 10 = very stressed"
-                    HorizontalOptions="Center"
-                    FontSize="Body"/>
-                <Label
-                    Text="{Binding Source={x:Reference SliderStress}, Path=Value, StringFormat='Level {0:F0}'}"
-                    HorizontalOptions="Center"
-                    FontSize="Body"
-                    FontAttributes="Bold"
-                    x:Name="LblStress"/>
+                    BackgroundColor="White"
+                    />
             </VerticalStackLayout>
             <VerticalStackLayout
                 Grid.Row="3"
-                Spacing="10">
-                <Label
-                    Text="Activity Minutes (today)"
-                    HorizontalOptions="Center"
-                    FontSize="Body"/>
+                Spacing="4">
+                <Grid
+                    ColumnDefinitions="*,Auto">
+                    <Label
+                        Text="Activity (min)"
+                        FontSize="Body"
+                        VerticalOptions="Center"
+                        />
+                    <Label
+                        Grid.Column="1"
+                        Text="{Binding Source={x:Reference SliderActivity}, Path=Value, StringFormat='{0:F0} min'}"
+                        FontSize="Body"
+                        FontAttributes="Bold"
+                        VerticalOptions="Center"
+                        x:Name="LblActivity"
+                        />
+                </Grid>
                 <Slider
                     x:Name="SliderActivity"
                     Minimum="0"
                     Maximum="120"
                     Value="30"
-                    BackgroundColor="White"/>
-                <Label
-                    Text="Any exercise, walking, or physical activity counts."
-                    HorizontalOptions="Center"
+                    BackgroundColor="White"
+                    />
+            </VerticalStackLayout>
+            <VerticalStackLayout
+                Grid.Row="4"
+                Spacing="8"
+                Padding="0,8,0,0">
+                <Button
+                    x:Name="BtnSubmit"
+                    Text="See my score"
                     FontSize="Body"
                     />
-                <Label
-                    Text="{Binding Source={x:Reference SliderActivity}, Path=Value, StringFormat='{0:F0} minutes'}"
-                    HorizontalOptions="Center"
-                    FontSize="Body"
-                    FontAttributes="Bold"
-                    x:Name="LblActivity"/>
             </VerticalStackLayout>
         </Grid>
     </ScrollView>
