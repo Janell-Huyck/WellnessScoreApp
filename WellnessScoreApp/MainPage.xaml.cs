@@ -20,6 +20,8 @@
             FrameMale.BorderColor = Colors.Blue;
             FrameFemale.BorderColor = Colors.Transparent;
             MainScrollView.BackgroundColor = Colors.PowderBlue;
+            SliderSleep.ThumbColor = Colors.Blue;
+            SliderSleep.MinimumTrackColor = Colors.Blue;
         }
 
         private void OnFemaleTapped(object sender, EventArgs e)
@@ -33,6 +35,8 @@
             FrameMale.BorderColor = Colors.Transparent;
             FrameFemale.BorderColor = Colors.HotPink;
             MainScrollView.BackgroundColor = Colors.LightPink;
+            SliderSleep.ThumbColor = Colors.HotPink;
+            SliderSleep.MinimumTrackColor = Colors.HotPink;
         }
     }
 }

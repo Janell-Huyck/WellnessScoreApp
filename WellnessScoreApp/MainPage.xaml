@@ -56,7 +56,26 @@
                     </VerticalStackLayout>
                 </Frame>
             </Grid>
-            
+            <VerticalStackLayout
+                Grid.Row="1"
+                Spacing="10">
+                <Label
+                    Text="Sleep (hours)"
+                    HorizontalOptions="Center"
+                    FontSize="Body"/>
+                <Slider
+                    x:Name="SliderSleep"
+                    Minimum="0"
+                    Maximum="12"
+                    Value="7"
+                    BackgroundColor="White"/>
+                <Label
+                    Text="{Binding Source={x:Reference SliderSleep}, Path=Value, StringFormat='{0:F1}'}"
+                    HorizontalOptions="Center"
+                    FontSize="Body"
+                    FontAttributes="Bold"
+                    x:Name="LblSleep"/>
+            </VerticalStackLayout>
         </Grid>
     </ScrollView>
 
