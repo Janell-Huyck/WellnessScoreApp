@@ -162,8 +162,9 @@
                 HasShadow="True"
                 IsVisible="False">
                 <Grid
-                    RowDefinitions="*,*,*"
-                    ColumnDefinitions="*,*">
+                    RowDefinitions="Auto, Auto, Auto, Auto"
+                    ColumnDefinitions="*,*"
+                    RowSpacing="6">
                     <Label
                         Grid.Row="0"
                         Grid.ColumnSpan="2"
@@ -189,6 +190,13 @@
                         Grid.Column="1"
                         x:Name="LblRating"
                         HorizontalOptions="End"/>
+                    <Label
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2"
+                        x:Name="LblRecommendation"
+                        LineBreakMode="WordWrap"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"/>
                 </Grid>
                 
             </Frame>

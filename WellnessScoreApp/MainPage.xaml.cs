@@ -51,9 +51,10 @@ namespace WellnessScoreApp
         private void OnBtnSubmitClick(object sender, EventArgs e)
         {
             int score = CalculateWellnessScore();
-            LblScore.Text = score.ToString();
             string rating = GetRating(score);
+            LblScore.Text = score.ToString();
             LblRating.Text = rating;
+            LblRecommendation.Text = GetRecommendation(rating);
             ResultsBox.IsVisible = true;
         }
 
@@ -79,6 +80,31 @@ namespace WellnessScoreApp
                 case >= 60: return "Good";
                 case >= 40: return "Fair";
                 default: return "Poor";
+            }
+        }
+
+        private string GetRecommendation(string rating)
+        {
+            switch (rating)
+            {
+                case "Excellent":
+                    return selectedGender == "male"
+                        ? "You're a champion. Keep crushing those weights, eating steak, and leading. Maybe grunt a little louder so everyone knows you're winning."
+                        : "You're doing so well! Remember to stay pretty while you exercise—maybe some yoga in a cute outfit. Don't forget to smile; it's good for your face.";
+                case "Good":
+                    return selectedGender == "male"
+                        ? "You're slipping. Man up: go to bed earlier, do some push-ups, and drink water like a normal human. No excuses."
+                        : "Aww, rough day? Try a nice bubble bath, a balanced breakfast so you don't get hangry, and a little walk. Maybe paint your nails after—self-care!";
+                case "Fair":
+                    return selectedGender == "male"
+                        ? "Get it together. More sleep, less caffeine, and move your body. Sitting on the couch isn't a hobby."
+                        : "Sweetie, you're run ragged. Less screen time, more meditation and journaling. Have you tried a calming face mask? So relaxing.";
+                case "Poor":
+                    return selectedGender == "male"
+                        ? "Rest day. No heavy lifting. Hydrate, take a short walk, and don't be a hero. The gym will still be there tomorrow."
+                        : "You should wear extra pink ribbons in your hair today—cute little girly girls like you should take good care of their hair. Maybe a nap, then some gentle yoga. So delicate.";
+                default:
+                    return "";
             }
         }
     }
