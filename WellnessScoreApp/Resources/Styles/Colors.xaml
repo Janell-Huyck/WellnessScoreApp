@@ -18,6 +18,12 @@
     <Color x:Key="Magenta">#D600AA</Color>
     <Color x:Key="MidnightBlue">#190649</Color>
     <Color x:Key="OffBlack">#1f1f1f</Color>
+    
+    <!-- Gender-themed colors for custom use -->
+    <Color x:Key="MaleMain">PowderBlue</Color>
+    <Color x:Key="MaleAccent">Blue</Color>
+    <Color x:Key="FemaleMain">LightPink</Color>
+    <Color x:Key="FemaleAccent">HotPink</Color>
 
     <Color x:Key="Gray100">#E1E1E1</Color>
     <Color x:Key="Gray200">#C8C8C8</Color>

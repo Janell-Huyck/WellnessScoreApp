@@ -17,11 +17,7 @@
         private void SetGenderMale()
         {
             selectedGender = "male";
-            FrameMale.BorderColor = Colors.Blue;
-            FrameFemale.BorderColor = Colors.Transparent;
-            MainScrollView.BackgroundColor = Colors.PowderBlue;
-            SliderSleep.ThumbColor = Colors.Blue;
-            SliderSleep.MinimumTrackColor = Colors.Blue;
+            UpdateColors();
         }
 
         private void OnFemaleTapped(object sender, EventArgs e)
@@ -31,12 +27,29 @@
 
         private void SetGenderFemale()
         {
-            selectedGender = "male";
-            FrameMale.BorderColor = Colors.Transparent;
-            FrameFemale.BorderColor = Colors.HotPink;
-            MainScrollView.BackgroundColor = Colors.LightPink;
-            SliderSleep.ThumbColor = Colors.HotPink;
-            SliderSleep.MinimumTrackColor = Colors.HotPink;
+            selectedGender = "female";
+            UpdateColors();
+        }
+
+        private void UpdateColors()
+        {
+            var prefix = selectedGender == "male" ? "Male" : "Female";
+            var mainColor = (Color)Application.Current.Resources[prefix + "Main"];
+            var accentColor = (Color)Application.Current.Resources[prefix + "Accent"];
+
+            MainScrollView.BackgroundColor = mainColor;
+
+            FrameMale.BorderColor = selectedGender == "male" ? accentColor : Colors.Gray;
+            FrameFemale.BorderColor = selectedGender == "female" ? accentColor : Colors.Gray;
+
+            SliderSleep.ThumbColor = accentColor;
+            SliderSleep.MinimumTrackColor = accentColor;
+
+            SliderStress.ThumbColor = accentColor;
+            SliderStress.MinimumTrackColor = accentColor;
+
+            SliderActivity.ThumbColor = accentColor;
+            SliderActivity.MinimumTrackColor = accentColor;
         }
     }
 }
