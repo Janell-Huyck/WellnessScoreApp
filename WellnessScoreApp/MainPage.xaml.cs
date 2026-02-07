@@ -117,7 +117,7 @@ namespace WellnessScoreApp
                 case "Poor":
                     return selectedGender == "male"
                         ? "Rest day. No heavy lifting. Hydrate, take a short walk, and don't be a hero. The gym will still be there tomorrow."
-                        : "You should wear extra pink ribbons in your hair today—cute little girly girls like you should take good care of their hair. Maybe a nap, then some gentle yoga. So delicate.";
+                        : "You should wear extra pink ribbons in your hair today. Cute little girly girls like you should take good care of their hair. Maybe a nap, then some gentle yoga. So delicate.";
                 default:
                     return "";
             }
